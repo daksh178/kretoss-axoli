@@ -10815,8 +10815,9 @@ figcaption {
 }
 
 .gallery-header {
-  max-width: 1440px;
+  max-width: 1440px; /* instead of fixed 1440px */
   margin: 0 auto;
+  padding: 1rem 2rem;
   display: flex;
   justify-content: center;
 }
@@ -10829,7 +10830,7 @@ figcaption {
 }
 
 .gallery-text h4 {
-  font-size: 24px;
+  font-size: 16px;
   line-height: 1.5;
   color: #333;
   font-weight: 400;
@@ -10845,7 +10846,7 @@ figcaption {
   font-size: 13px;
   font-weight: 600;
   padding: 6px 16px;
-  border-radius: 60px;
+  border-radius: 20px;
   text-decoration: none;
   height: 65px;
 }
