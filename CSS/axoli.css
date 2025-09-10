@@ -3553,10 +3553,10 @@ figcaption {
   overflow: hidden;
 }
 
-.container-full.padding-72px {
+/* .container-full.padding-72px {
   padding-left: 4.5rem;
   padding-right: 4.5rem;
-}
+} */
 
 .container-full.padding-72px.overflow {
   overflow: visible;
@@ -5768,14 +5768,18 @@ figcaption {
   display: none;
 }
 
+.footer-main-text {
+  font-size: 110px;
+}
 .footer-text {
   color: var(--white);
   max-width: 10rem;
 }
 
 .footer-paragraph {
-  color: var(--gray);
+  color: #ffffff;
   max-width: 20rem;
+  text-transform: uppercase;
 }
 
 .works-page-title {
@@ -6307,7 +6311,7 @@ figcaption {
   flex-flow: column;
   justify-content: center;
   align-items: stretch;
-  width: 80%;
+  width: 100%;
   height: 100%;
   margin-left: auto;
   display: flex;
@@ -6337,7 +6341,7 @@ figcaption {
   grid-row-gap: 0.56vw;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   width: 100%;
   display: flex;
 }
@@ -6813,6 +6817,22 @@ figcaption {
   display: flex;
   position: relative;
   top: -10vh;
+  transform: rotateX(1deg) rotateY(0) rotateZ(0);
+}
+
+.footer-cust-hero-center {
+  z-index: 3;
+  perspective: 100vw;
+  transform-style: preserve-3d;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+  top: 15vh;
+  right: -65px;
   transform: rotateX(1deg) rotateY(0) rotateZ(0);
 }
 
@@ -7329,6 +7349,24 @@ figcaption {
   color: var(--gray);
 }
 
+.color-white {
+  color: #ffffff;
+}
+
+.follow-text {
+  color: #d1b06b;
+  font-size: 20px;
+}
+
+.explore_title {
+  color: #4b4b4b;
+  font-size: 35px;
+}
+
+.footer-img {
+  margin-left: 20px;
+}
+
 .credits-flex {
   grid-column-gap: 1rem;
   justify-content: flex-start;
@@ -7340,7 +7378,9 @@ figcaption {
 .footer-large-title {
   color: var(--white);
   margin-top: 4.44vw;
-  font-size: 7rem;
+  font-size: 6rem;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #4f4f4f;
 }
 
 .footer-info-wrapper {
@@ -7411,10 +7451,11 @@ figcaption {
 }
 
 .footer-link-text {
-  color: var(--white);
+  color: #ffffff;
   text-shadow: 0 1.3rem 0 var(--white);
   line-height: 1.3rem;
   position: absolute;
+  font-size: 22px;
 }
 
 .footer-bottom-links {
