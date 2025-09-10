@@ -11017,3 +11017,16 @@ figcaption {
 .pos-east {
   grid-column: 5;
 }
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(189px, 1fr));
+  grid-gap: 5px;
+}
+.image-item img {
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+   width: 189px;
+  height: 234px;
+}

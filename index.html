@@ -2306,6 +2306,101 @@
       </div>
     </section>
 
+    <section class="section">
+      <div
+        class="w-layout-blockcontainer container-full padding-4-5rem w-container"
+      >
+        <div class="works-title-block">
+          <h3 ScrollTitleStagger="" class="section-title">
+            Sh<span class="highlight">o</span>wr<span class="highlight">oo</span
+            >m
+          </h3>
+        </div>
+        <div class="space"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div
+        class="w-layout-blockcontainer container-full padding-4-5rem w-container"
+      >
+        <div class="image-grid">
+          <div class="image-item">
+            <img src="/images/showroom-img-1.png" alt="img1" />
+          </div>
+          <div class="image-item">
+            <img src="/images/showroom-img-2.png" alt="img2" />
+          </div>
+          <div class="image-item">
+            <img src="/images/showroom-img-3.png" alt="img3" />
+          </div>
+          <div class="image-item">
+            <img src="/images/showroom-img-4.png" alt="img4" />
+          </div>
+          <div class="image-item">
+            <img src="/images/showroom-img-5.png" alt="img5" />
+          </div>
+          <div class="image-item">
+            <img src="/images/showroom-img-6.png" alt="img6" />
+          </div>
+          <div class="image-item">
+            <img src="/images/showroom-img-7.png" alt="img7" />
+          </div>
+          <div class="image-item">
+            <img src="/images/showroom-img-8.png" alt="img8" />
+          </div>
+          <div class="image-item">
+            <img src="/images/showroom-img-9.png" alt="img9" />
+          </div>
+          <div class="image-item">
+            <img src="/images/showroom-img-10.png" alt="img10" />
+          </div>
+          <div class="image-item">
+            <img src="/images/showroom-img-11.png" alt="img11" />
+          </div>
+          <div class="image-item">
+            <img src="/images/showroom-img-12.png" alt="img12" />
+          </div>
+          <div class="image-item">
+            <img src="/images/showroom-img-13.png" alt="img13" />
+          </div>
+          <div class="image-item">
+            <img src="/images/showroom-img-14.png" alt="img14" />
+          </div>
+          <div class="image-item">
+            <img src="/images/showroom-img-15.png" alt="img15" />
+          </div>
+          <div class="image-item">
+            <img src="/images/showroom-img-16.png" alt="img16" />
+          </div>
+          <div class="image-item">
+            <img src="/images/showroom-img-17.png" alt="img17" />
+          </div>
+          <div class="image-item">
+            <img src="/images/showroom-img-18.png" alt="img18" />
+          </div>
+          <div class="image-item">
+            <img src="/images/showroom-img-19.png" alt="img19" />
+          </div>
+          <div class="image-item">
+            <img src="/images/showroom-img-20.png" alt="img20" />
+          </div>
+          <div class="image-item">
+            <img src="/images/showroom-img-21.png" alt="img21" />
+          </div>
+          <div class="image-item">
+            <img src="/images/showroom-img-22.png" alt="img22" />
+          </div>
+          <div class="image-item">
+            <img src="/images/showroom-img-23.png" alt="img23" />
+          </div>
+          <div class="image-item">
+            <img src="/images/showroom-img-24.png" alt="img24" />
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- about section -->
 
     <section class="section">
@@ -2749,6 +2844,26 @@
     <script src="js/gsap.min.js"></script>
     <script src="js/ScrollTrigger.min.js"></script>
     <script src="js/SplitText.min.js"></script>
+
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".image-grid",
+          start: "top 95%",
+          end: "bottom 5%",
+          scrub: 1,
+        },
+      });
+
+      tl.from(".image-item", {
+        opacity: 0,
+        scale: 0.8,
+        stagger: 0.2,
+        ease: "power2.out",
+      });
+    </script>
 
     <script src="js/manf_js/Flip.min.js"></script>
     <script src="js/manf_js/gsap.min.js"></script>
