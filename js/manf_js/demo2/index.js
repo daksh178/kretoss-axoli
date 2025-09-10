@@ -28,7 +28,9 @@ const animationDefaults = { duration: 1, ease: "expo.inOut" };
 const flipImage = (gridItem, gridImage) => {
   gsap.set(gridItem, { zIndex: 99 });
   const state = Flip.getState(gridImage, { props: "borderRadius" });
+
   if (isFullscreen) {
+    // Move back to original parent
     gridItem.appendChild(gridImage);
   } else {
     fullscreenElement.appendChild(gridImage);
@@ -39,45 +41,26 @@ const flipImage = (gridItem, gridImage) => {
     absolute: true,
     prune: true,
     onComplete: () => {
-      if (isFullscreen) {
-        gsap.set(gridItem, { zIndex: "auto" });
-      }
+      gsap.set(gridItem, { zIndex: "auto" });
       isFullscreen = !isFullscreen;
+
+      // After changing fullscreen state, reset other images if closing
+      if (!isFullscreen) {
+        resetOtherItems();
+      }
     },
   });
 };
 
-// Function to determine the position class based on the item and clicked item positions
-const determinePositionClass = (itemRect, clickedRect) => {
-  if (itemRect.bottom < clickedRect.top) {
-    return POSITION_CLASSES.NORTH;
-  } else if (itemRect.top > clickedRect.bottom) {
-    return POSITION_CLASSES.SOUTH;
-  } else if (itemRect.right < clickedRect.left) {
-    return POSITION_CLASSES.WEST;
-  } else if (itemRect.left > clickedRect.right) {
-    return POSITION_CLASSES.EAST;
-  }
-  return "";
-};
+// Function to reset all other images to their original grid positions
+const resetOtherItems = () => {
+  const state = Flip.getState(gridItems);
 
-// Function to move other items based on their position relative to the clicked item
-const moveOtherItems = (gridItem, gridImage) => {
-  const clickedRect = gridItem.getBoundingClientRect();
-
-  // For the remaining images
-  const otherGridItems = gridItems.filter((item) => item !== gridItem);
-  const state = Flip.getState(otherGridItems);
-
-  otherGridItems.forEach((item) => {
-    const itemRect = item.getBoundingClientRect();
-    const classname = determinePositionClass(itemRect, clickedRect);
-    if (classname) {
-      item.classList.toggle(classname, !isFullscreen);
-      gsap.set(item, {
-        rotation: isFullscreen ? 0 : gsap.utils.random(-50, 50),
-      });
-    }
+  gridItems.forEach((item) => {
+    // Remove any temporary classes
+    item.classList.remove(...Object.values(POSITION_CLASSES));
+    // Reset rotation smoothly
+    gsap.to(item, { rotation: 0, duration: 0.5 });
   });
 
   Flip.from(state, {
@@ -91,15 +74,16 @@ const moveOtherItems = (gridItem, gridImage) => {
 const toggleImage = (ev) => {
   const gridImage = ev.target;
   const gridItem = gridItems[gridImage.dataset.index];
+
   flipImage(gridItem, gridImage);
-  moveOtherItems(gridItem, gridImage);
+  // Do not move other items on open
 };
 
 // Function to initialize event listeners for grid images
 const initEvents = () => {
-  gridImages.forEach((gridImage, position) => {
+  gridImages.forEach((gridImage, index) => {
     // Save the index of the image
-    gridImage.dataset.index = position;
+    gridImage.dataset.index = index;
     // Add click event listener to the image
     gridImage.addEventListener("click", toggleImage);
   });
