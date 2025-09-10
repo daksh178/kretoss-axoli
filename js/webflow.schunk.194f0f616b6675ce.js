@@ -25595,7 +25595,7 @@
                         "wf:transform": {
                           rotation: ["45deg", "0deg"],
                           x: ["2.825rem", "0rem"],
-                          y: ["-1.575rem", "-2.0294rem"],
+                          y: ["-3rem", "-3rem"],
                         },
                       },
                     },
@@ -25608,7 +25608,7 @@
                         "wf:transform": {
                           rotation: ["0deg", "-45deg"],
                           x: ["0rem", "-2.825rem"],
-                          y: ["-1.575rem", "-2.0294rem"],
+                          y: ["-3rem", "-3rem"],
                         },
                       },
                     },
