@@ -4464,8 +4464,8 @@ figcaption {
   grid-column-gap: 0.5rem;
   grid-row-gap: 0.5rem;
   border-radius: var(--border-radius);
-  background-color: var(--light-gray); /* flex-direction: column; */
-  width: 20rem;
+  background-color: var(--light-gray);
+  width: 466px;
   padding: 2rem;
   display: flex;
   height: 110px;
@@ -4511,16 +4511,15 @@ figcaption {
 
 .contact-info-wrapper {
   display: flex; /* use flexbox only */
-  flex-wrap: wrap; /* allow items to wrap to next line */
   flex-direction: row; /* row layout */
-  justify-content: center; /* center items horizontally */
+  justify-content: space-between; /* center items horizontally */
   align-items: center; /* center items vertically */
-  gap: 2.22vw; /* space between items */
-  width: 100%;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   position: sticky;
   top: 1.875rem;
+  gap: 10px;
 }
 
 .contact-us-wrapper {
