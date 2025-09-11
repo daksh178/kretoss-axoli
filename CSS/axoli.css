@@ -10981,9 +10981,14 @@ figcaption {
 .test-2 {
   display: flex;
   justify-content: space-between;
-  gap: 5px;
+  gap: 10px;
   color: #f65e04;
-  font-size: 16px;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.text-5 img {
+  color: #f65e04;
 }
 
 .grid-manf-images-wrapper {
