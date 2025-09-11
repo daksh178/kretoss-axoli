@@ -127,17 +127,17 @@
               <p StaggerText="" class="nav-link-text">Home</p>
             </div></a
           >
-          <a href="about-us.html" class="nav-link-wrapper w-inline-block"
+          <a href="#" class="nav-link-wrapper w-inline-block"
             ><div class="nav-link-block">
               <p StaggerText="" class="nav-link-text">About</p>
             </div></a
           >
-          <a href="about-us.html" class="nav-link-wrapper w-inline-block"
+          <a href="#" class="nav-link-wrapper w-inline-block"
             ><div class="nav-link-block">
               <p StaggerText="" class="nav-link-text">Manufacture</p>
             </div></a
           >
-          <a href="about-us.html" class="nav-link-wrapper w-inline-block"
+          <a href="#" class="nav-link-wrapper w-inline-block"
             ><div class="nav-link-block">
               <p StaggerText="" class="nav-link-text">Collection</p>
             </div></a
@@ -155,17 +155,17 @@
               class="logo"
           /></a>
 
-          <a href="about-us.html" class="nav-link-wrapper w-inline-block"
+          <a href="#" class="nav-link-wrapper w-inline-block"
             ><div class="nav-link-block">
               <p StaggerText="" class="nav-link-text">Gallery</p>
             </div></a
           >
-          <a href="about-us.html" class="nav-link-wrapper w-inline-block"
+          <a href="#" class="nav-link-wrapper w-inline-block"
             ><div class="nav-link-block">
               <p StaggerText="" class="nav-link-text">Resource</p>
             </div></a
           >
-          <a href="about-us.html" class="nav-link-wrapper w-inline-block"
+          <a href="#" class="nav-link-wrapper w-inline-block"
             ><div class="nav-link-block">
               <p StaggerText="" class="nav-link-text">Contact</p>
             </div></a
@@ -1506,10 +1506,10 @@
 
     <!-- gallery section -->
 
-    <!-- <section data-w-id="fb358458-e6db-200b-8fdd-2f9263c6fcb9" class="section">
+    <section data-w-id="fb358458-e6db-200b-8fdd-2f9263c6fcb9" class="section">
       <div class="w-layout-blockcontainer container-full overflow w-container">
         <div class="grid-manf-images-main-wrapper">
-          <div class="works-title-block">
+          <div>
             <h3
               ScrollTitleStagger=""
               class="section-title"
@@ -1527,22 +1527,41 @@
                 </div>
 
                 <div>
-                  <a href="services/design.html" class="gallery-btn">
-                    <span class="icon-circle">
+                  <a
+                    href="#"
+                    data-w-id="34a723e7-6853-d46d-e857-9ec075fdd6b1"
+                    class="button-with-circle-icon w-inline-block"
+                    ><div class="button-arrow-wrapper">
                       <img
+                        width="Auto"
+                        height="Auto"
+                        alt=""
                         src="https://cdn.prod.website-files.com/689989c2270f878736e77521/689989c2270f878736e7760d_navigation.svg"
-                        alt="arrow"
+                        loading="eager"
+                        class="arrow"
                       />
-                    </span>
-                    <span class="btn-text">KNOW MORE</span>
-                  </a>
+                    </div>
+                    <div>KNOW MORE</div></a
+                  >
                 </div>
               </div>
+            </div>
+            <div class="gallary-img-section">
+              <img src="/images/gal-img-1.png" class="gallary-img" />
+              <img src="/images/gal-img-2.png" class="gallary-img" />
+              <img src="/images/gal-img-3.png" class="gallary-img" />
+              <img src="/images/gal-img-4.png" class="gallary-img" />
+              <img src="/images/gal-img-5.png" class="gallary-img" />
+              <img src="/images/gal-img-1.png" class="gallary-img" />
+              <img src="/images/gal-img-2.png" class="gallary-img" />
+              <img src="/images/gal-img-3.png" class="gallary-img" />
+              <img src="/images/gal-img-4.png" class="gallary-img" />
+              <img src="/images/gal-img-5.png" class="gallary-img" />
             </div>
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
 
     <!-- supprt company section -->
 
@@ -2868,6 +2887,74 @@
         scale: 0.8,
         stagger: 0.2,
         ease: "power2.out",
+      });
+    </script>
+
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Fade + scale once when they come into view
+      gsap.from(".gallary-img", {
+        opacity: 0,
+        scale: 0.8,
+        stagger: 0.2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".gallary-img-section",
+          start: "top 90%",
+          once: true,
+        },
+      });
+
+      // Horizontal scroll movement tied to scroll progress
+      const gallerySection = document.querySelector(".gallary-img-section");
+      if (gallerySection) {
+        const imageWidth = 374;
+        const gap = 5;
+        const totalImages = document.querySelectorAll(".gallary-img").length;
+        const containerWidth = gallerySection.parentElement.offsetWidth;
+        const totalWidth = imageWidth * totalImages + gap * (totalImages - 1);
+        const scrollDistance = totalWidth - containerWidth;
+
+        if (scrollDistance > 0) {
+          gsap.to(".gallary-img-section", {
+            x: -scrollDistance,
+            ease: "none",
+            scrollTrigger: {
+              trigger: ".gallary-img-section",
+              start: "top 95%",
+              end: "bottom 5%",
+              scrub: 1,
+            },
+          });
+        }
+      }
+
+      // ===== FULLSCREEN IMAGE LOGIC =====
+      const fullscreenWrapper = document.createElement("div");
+      fullscreenWrapper.className = "fullscreen-view";
+      fullscreenWrapper.innerHTML = `<img class="fullscreen-img" />`;
+      document.body.appendChild(fullscreenWrapper);
+
+      const fullscreenImg = fullscreenWrapper.querySelector(".fullscreen-img");
+
+      document.querySelectorAll(".gallary-img").forEach((img) => {
+        img.addEventListener("click", () => {
+          fullscreenImg.src = img.src;
+          fullscreenWrapper.classList.add("active");
+        });
+      });
+
+      // Close on click
+      fullscreenWrapper.addEventListener("click", () => {
+        fullscreenWrapper.classList.remove("active");
+      });
+
+      // Close on ESC
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          fullscreenWrapper.classList.remove("active");
+        }
       });
     </script>
 

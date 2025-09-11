@@ -6747,6 +6747,9 @@ figcaption {
   max-width: 95vw;
   min-height: 90vh;
   max-height: 90vh;
+  object-fit: cover; /* fills the box while keeping aspect ratio */
+  object-position: center; /* center the crop area */
+  background-repeat: no-repeat;
   position: absolute;
 }
 
@@ -10859,11 +10862,12 @@ figcaption {
 }
 
 .gallery-header {
-  max-width: 1440px; /* instead of fixed 1440px */
-  margin: 0 auto;
-  padding: 1rem 2rem;
+  max-width: 1440px;
+  padding: 1rem 0;
   display: flex;
   justify-content: center;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 .gallery-inner {
   display: flex;
@@ -10874,7 +10878,7 @@ figcaption {
 }
 
 .gallery-text h4 {
-  font-size: 16px;
+  font-size: 24px;
   line-height: 1.5;
   color: #333;
   font-weight: 400;
@@ -10931,7 +10935,7 @@ figcaption {
   justify-content: space-between;
   gap: 5px;
   color: #f65e04;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .grid-manf-images-wrapper {
@@ -11021,7 +11025,7 @@ figcaption {
 .image-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(189px, 1fr));
-  grid-gap: 5px;
+  grid-gap: 4px;
 }
 .image-item img {
   height: auto;
@@ -11031,7 +11035,7 @@ figcaption {
   height: 234px;
 }
 
-<style > .tooltip {
+.tooltip {
   position: relative;
   display: inline-block;
   cursor: pointer;
@@ -11068,4 +11072,70 @@ figcaption {
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
+}
+
+.gallary-img-section {
+  display: flex;
+  gap: 5px;
+  width: max-content; /* Allow container to expand beyond viewport */
+  will-change: transform; /* Optimize for animations */
+}
+
+.gallary-img {
+  width: 374px;
+  height: 499px;
+  border-radius: 12px;
+  flex-shrink: 0; /* Prevent images from shrinking */
+  will-change: transform, opacity; /* Optimize for animations */
+}
+
+/* Container to control overflow */
+.gallary-img-section {
+  overflow: visible; /* Let GSAP handle the positioning */
+}
+
+/* Optional: Add some padding to the parent container */
+.gallery-inner {
+  overflow: hidden; /* Hide the overflow from parent */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .gallary-img {
+    width: 300px;
+    height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallary-img {
+    width: 250px;
+    height: 333px;
+  }
+}
+
+.fullscreen-view {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.fullscreen-view.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.fullscreen-img {
+  max-width: 95vw;
+  max-height: 95vh;
+  object-fit: contain;
+  border-radius: 10px;
+  cursor: pointer;
 }
