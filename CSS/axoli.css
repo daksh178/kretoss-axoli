@@ -4463,21 +4463,19 @@ figcaption {
   grid-column-gap: 0.5rem;
   grid-row-gap: 0.5rem;
   border-radius: var(--border-radius);
-  background-color: var(--light-gray);
-  /* flex-direction: column; */
+  background-color: var(--light-gray); /* flex-direction: column; */
   width: 20rem;
   padding: 2rem;
   display: flex;
-  height: 147px;
+  height: 110px;
   align-items: center;
 }
-
 .contact-us-form-wrapper {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 2rem;
   padding-right: 2rem;
+  padding-left: 2rem;
 }
 
 .message-title-field-wrapper {
@@ -11219,4 +11217,48 @@ figcaption {
   color: #4b4b4b;
   font-size: 18px;
   font-weight: 400;
+}
+
+/* loader  */
+#loader-wrapper {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff; /* background while loading */
+  z-index: 9999;
+}
+.loader {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  background-color: rgba(0, 0, 0, 0.5);
+  transform: rotate(45deg);
+  overflow: hidden;
+}
+.loader:after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  margin: auto;
+  background: #222b32;
+}
+.loader:before {
+  content: "";
+  position: absolute;
+  inset: -15px;
+  margin: auto;
+  background: #de3500;
+  animation: diamondLoader 2s linear infinite;
+}
+@keyframes diamondLoader {
+  0%,
+  10% {
+    transform: translate(-64px, -64px) rotate(-45deg);
+  }
+  90%,
+  100% {
+    transform: translate(0px, 0px) rotate(-45deg);
+  }
 }
