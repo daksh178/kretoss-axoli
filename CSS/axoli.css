@@ -5972,6 +5972,16 @@ figcaption {
   min-height: 100vh;
   margin-bottom: 50px;
 }
+.grid-studio-images-main-wrapper {
+  width: 1202px; /* fixed width */
+  max-width: 1202px; /* keep it from stretching wider */
+  margin: 0 auto; /* center horizontally */
+  min-height: 100vh;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
 
 .block-images-wrapper {
   grid-column-gap: 1rem;
@@ -11138,4 +11148,75 @@ figcaption {
   object-fit: contain;
   border-radius: 10px;
   cursor: pointer;
+}
+.tagline-section-title {
+  text-transform: none;
+  font-size: 100px;
+  font-weight: 600;
+}
+.tagline-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tagline-section-img {
+  width: 517px;
+  height: 186px;
+  border-radius: 43px;
+  transform-origin: center center; /* important for scaling */
+  display: inline-block;
+  position: relative; /* enables z-index */
+  z-index: 2; /* appear above text */
+  will-change: transform;
+}
+
+.studio-header {
+  margin-top: 70px;
+}
+
+.studio-section-title {
+  text-align: left;
+  text-transform: none;
+  font-size: 100px;
+  font-weight: 600;
+  position: relative; /* create stacking context for children */
+  z-index: 1;
+}
+
+.studio-img-container {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center; /* centers horizontally */
+  align-items: center; /* centers vertically if container had height */
+  width: 100%; /* take full available width */
+  flex-direction: column;
+  gap: 30px;
+}
+
+.studio-img {
+  display: block;
+  width: 1030px;
+  height: 534px;
+  border-radius: 70px;
+  object-fit: cover; /* keep aspect ratio */
+}
+.studio-img-texts {
+  margin-left: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-right: 100px;
+  margin-top: 15px;
+}
+.studio-img-header {
+  color: #161616;
+  font-size: 38px;
+  font-weight: 500;
+}
+
+.studio-img-text {
+  color: #4b4b4b;
+  font-size: 18px;
+  font-weight: 400;
 }
