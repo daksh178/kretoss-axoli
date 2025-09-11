@@ -4520,6 +4520,8 @@ figcaption {
   position: sticky;
   top: 1.875rem;
   gap: 10px;
+  padding-left: 0.9375rem;
+  padding-right: 0.9375rem;
 }
 
 .contact-us-wrapper {
