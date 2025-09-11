@@ -3316,7 +3316,7 @@ textarea.w-select {
 }
 
 .w-layout-blockcontainer {
-  max-width: 940px;
+  /* max-width: 940px; */
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -4510,18 +4510,15 @@ figcaption {
 }
 
 .contact-info-wrapper {
-  grid-column-gap: 2.22vw;
-  grid-row-gap: 2.22vw;
-  flex-direction: row;
-  grid-template-rows: auto;
-  grid-template-columns: repeat(auto-fit, minmax(196px, 0.5fr));
-  grid-auto-columns: 1fr;
-  justify-content: center;
-  align-items: center;
+  display: flex; /* use flexbox only */
+  flex-wrap: wrap; /* allow items to wrap to next line */
+  flex-direction: row; /* row layout */
+  justify-content: center; /* center items horizontally */
+  align-items: center; /* center items vertically */
+  gap: 2.22vw; /* space between items */
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  display: flex;
   position: sticky;
   top: 1.875rem;
 }
@@ -5768,7 +5765,7 @@ figcaption {
 }
 
 .footer-main-text {
-  font-size: 110px;
+  font-size: clamp(40px, 8vw, 110px);
 }
 .footer-text {
   color: var(--white);
@@ -5968,9 +5965,34 @@ figcaption {
 }
 
 .grid-manf-images-main-wrapper {
-  min-height: 100vh;
-  margin-bottom: 50px;
+  min-height: 100vh; /* full viewport height */
+  padding: 2rem; /* optional padding for small screens */
+  box-sizing: border-box;
 }
+
+/* Medium screens (tablet) */
+@media (max-width: 1024px) {
+  .grid-manf-images-main-wrapper {
+    min-height: 80vh;
+  }
+}
+
+/* Small screens (mobile) */
+@media (max-width: 768px) {
+  .grid-manf-images-main-wrapper {
+    min-height: 70vh;
+    padding: 1.5rem;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .grid-manf-images-main-wrapper {
+    min-height: 60vh;
+    padding: 1rem;
+  }
+}
+
 .grid-studio-images-main-wrapper {
   width: 1202px; /* fixed width */
   max-width: 1202px; /* keep it from stretching wider */
@@ -6826,6 +6848,11 @@ figcaption {
   top: 15vh;
   right: -65px;
   transform: rotateX(1deg) rotateY(0) rotateZ(0);
+}
+@media (max-width: 992px) {
+  .footer-cust-hero-center {
+    display: none;
+  }
 }
 
 .nav-more-links-wrapper {
@@ -10873,6 +10900,8 @@ figcaption {
   justify-content: center;
   margin-left: 100px;
   margin-right: 100px;
+  margin-top: 30px;
+  margin-bottom: 50px;
 }
 .gallery-inner {
   display: flex;
@@ -11092,16 +11121,6 @@ figcaption {
   border-radius: 12px;
   flex-shrink: 0; /* Prevent images from shrinking */
   will-change: transform, opacity; /* Optimize for animations */
-}
-
-/* Container to control overflow */
-.gallary-img-section {
-  overflow: visible; /* Let GSAP handle the positioning */
-}
-
-/* Optional: Add some padding to the parent container */
-.gallery-inner {
-  overflow: hidden; /* Hide the overflow from parent */
 }
 
 /* Responsive adjustments */
