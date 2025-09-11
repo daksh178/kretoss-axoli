@@ -6744,10 +6744,6 @@ figcaption {
 
 .hero-image-max {
   z-index: 7;
-  /* border-top-left-radius: var(--border-radius);
-  border-top-right-radius: var(--border-radius);
-  border-bottom-left-radius: var(--border-radius);
-  border-bottom-right-radius: var(--border-radius); */
   opacity: 0;
   object-position: 50% 50%;
   visibility: hidden;
@@ -6755,8 +6751,8 @@ figcaption {
   max-width: 95vw;
   min-height: 90vh;
   max-height: 90vh;
-  object-fit: cover; /* fills the box while keeping aspect ratio */
-  object-position: center; /* center the crop area */
+  object-fit: cover;
+  object-position: center;
   background-repeat: no-repeat;
   position: absolute;
 }
