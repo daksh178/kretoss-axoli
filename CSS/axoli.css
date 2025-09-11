@@ -4466,7 +4466,7 @@ figcaption {
   border-radius: var(--border-radius);
   background-color: var(--light-gray);
   width: 466px;
-  padding: 2rem;
+  padding: 1rem;
   display: flex;
   height: 110px;
   align-items: center;
@@ -4514,7 +4514,7 @@ figcaption {
   flex-direction: row; /* row layout */
   justify-content: space-between; /* center items horizontally */
   align-items: center; /* center items vertically */
-  max-width: 100%;
+  max-width: 70%;
   margin-left: auto;
   margin-right: auto;
   position: sticky;
@@ -4533,7 +4533,7 @@ figcaption {
 }
 
 .contact-us-info-title {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
   text-align: left;
   white-space: nowrap;
@@ -4544,7 +4544,7 @@ figcaption {
   grid-row-gap: 0.9375rem;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 70%;
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -4590,7 +4590,7 @@ figcaption {
   color: #4b4b4b;
   margin-top: 0;
   margin-bottom: 0;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .text-area {
@@ -5012,6 +5012,14 @@ figcaption {
   object-fit: contain;
   min-height: 1.67vw;
   max-height: 1.67vw;
+  position: relative;
+  top: -0.07vw;
+}
+
+.shop-arrow {
+  object-fit: contain;
+  min-height: 2vw;
+  max-height: 2vw;
   position: relative;
   top: -0.07vw;
 }
@@ -5778,7 +5786,8 @@ figcaption {
 .footer-paragraph {
   color: #ffffff;
   max-width: 20rem;
-  text-transform: uppercase;
+  text-transform: capitalize;
+  font-size: 20px;
 }
 
 .works-page-title {
@@ -5866,6 +5875,7 @@ figcaption {
   font-weight: 800;
   position: absolute;
   transform: translate(0, -10vh);
+  text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5); /* shadow */
 }
 
 .highlight {
@@ -5969,7 +5979,7 @@ figcaption {
 
 .grid-manf-images-main-wrapper {
   min-height: 100vh; /* full viewport height */
-  padding: 2rem; /* optional padding for small screens */
+  /* padding: 2rem;  */
   box-sizing: border-box;
 }
 
@@ -7163,8 +7173,8 @@ figcaption {
   z-index: 10;
   perspective: 100vh;
   transform-origin: 50%;
-  width: 50%;
-  height: 50%;
+  width: 80%;
+  height: 80%;
   position: relative;
 }
 
@@ -11126,6 +11136,15 @@ figcaption {
   will-change: transform, opacity; /* Optimize for animations */
 }
 
+/* Container to control overflow */
+.gallary-img-section {
+  overflow: visible; /* Let GSAP handle the positioning */
+}
+
+/* Optional: Add some padding to the parent container */
+.gallery-inner {
+  overflow: hidden; /* Hide the overflow from parent */
+}
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .gallary-img {
@@ -11280,4 +11299,45 @@ figcaption {
   100% {
     transform: translate(0px, 0px) rotate(-45deg);
   }
+}
+
+.showroom-description {
+  /* max-width: 700px; */
+  margin: 1rem auto 1rem;
+  text-align: left;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.showroom-header-class {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.getsample-header-class {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.skew-label {
+  display: inline-block;
+  background: #f5f5f5;
+  padding: 10px 30px;
+  transform: skewX(-40deg);
+}
+
+.skew-label span {
+  display: inline-block;
+  transform: skewX(40deg);
+  font-size: 16px;
+  color: #000;
+  font-weight: 400;
+}
+
+.get-sample-section-title {
+  font-size: 28px;
 }
