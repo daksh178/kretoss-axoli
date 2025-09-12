@@ -7412,8 +7412,9 @@ figcaption {
 .footer-large-title {
   color: var(--white);
   margin-top: 4.44vw;
-  font-size: 6rem;
+  font-size: 5rem;
   padding-bottom: 20px;
+  text-align: center;
   border-bottom: 1px solid #4f4f4f;
 }
 
