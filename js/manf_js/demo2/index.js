@@ -14,7 +14,7 @@ const POSITION_CLASSES = {
 
 // Selecting DOM elements
 const gridElement = document.querySelector(".grid");
-const gridItems = Array.from(gridElement.querySelectorAll(".grid__item")); // Convert NodeList to Array
+const gridItems = Array.from(gridElement.querySelectorAll(".grid__item"));
 const gridImages = gridElement.querySelectorAll(".grid__img");
 const fullscreenElement = document.querySelector(".fullscreen");
 
@@ -24,7 +24,7 @@ let isFullscreen = false;
 // Animation defaults
 const animationDefaults = { duration: 1, ease: "expo.inOut" };
 
-// Function to flip the clicked image and animate its movement
+// Flip the clicked image and animate its movement
 const flipImage = (gridItem, gridImage) => {
   gsap.set(gridItem, { zIndex: 99 });
   const state = Flip.getState(gridImage, { props: "borderRadius" });
@@ -33,6 +33,7 @@ const flipImage = (gridItem, gridImage) => {
     // Move back to original parent
     gridItem.appendChild(gridImage);
   } else {
+    // Move into fullscreen container
     fullscreenElement.appendChild(gridImage);
   }
 
@@ -44,7 +45,6 @@ const flipImage = (gridItem, gridImage) => {
       gsap.set(gridItem, { zIndex: "auto" });
       isFullscreen = !isFullscreen;
 
-      // After changing fullscreen state, reset other images if closing
       if (!isFullscreen) {
         resetOtherItems();
       }
@@ -52,14 +52,12 @@ const flipImage = (gridItem, gridImage) => {
   });
 };
 
-// Function to reset all other images to their original grid positions
+// Reset all other images to their original grid positions
 const resetOtherItems = () => {
   const state = Flip.getState(gridItems);
 
   gridItems.forEach((item) => {
-    // Remove any temporary classes
     item.classList.remove(...Object.values(POSITION_CLASSES));
-    // Reset rotation smoothly
     gsap.to(item, { rotation: 0, duration: 0.5 });
   });
 
@@ -70,29 +68,33 @@ const resetOtherItems = () => {
   });
 };
 
-// Click event handler for the grid images
 const toggleImage = (ev) => {
   const gridImage = ev.target;
   const gridItem = gridItems[gridImage.dataset.index];
 
+  // If currently fullscreen and the clicked image is the one in fullscreen -> close it
+  if (isFullscreen && fullscreenElement.contains(gridImage)) {
+    flipImage(gridItem, gridImage);
+    return;
+  }
+
+  // If something else is already fullscreen -> block clicks
+  if (isFullscreen) return;
+
+  // Otherwise open this image fullscreen
   flipImage(gridItem, gridImage);
-  // Do not move other items on open
 };
 
-// Function to initialize event listeners for grid images
+// Initialize event listeners for grid images
 const initEvents = () => {
   gridImages.forEach((gridImage, index) => {
-    // Save the index of the image
     gridImage.dataset.index = index;
-    // Add click event listener to the image
     gridImage.addEventListener("click", toggleImage);
   });
 };
 
-// Preloading images and initializing setup when complete
+// Preload images then initialize
 preloadImages(".grid__img").then(() => {
-  // Remove the loading class from the body
   document.body.classList.remove("loading");
-  // Initialize event listeners
   initEvents();
 });
