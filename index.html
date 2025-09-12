@@ -80,9 +80,11 @@
   </head>
   <body class="body">
     <!-- Loader -->
-   <div id="loader-wrapper">
-      <span class="loader"></span>
+
+    <div id="loader-wrapper">
+      <div id="lottie"></div>
     </div>
+ 
     <div id="main-content" style="display: block"> 
     <div
       data-animation="default"
@@ -2960,26 +2962,38 @@
     <script src="js/manf_js/gsap.min.js"></script>
     <script src="js/manf_js/imagesloaded.pkgd.min.js"></script>
     <script type="module" src="js/manf_js/demo2/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 
    <script>
-  window.addEventListener("load", function () {
-    if (window.gsap) {
-      gsap.to("#loader-wrapper", {
-        opacity: 0,
-        duration: 0.5,
-        onComplete: () => {
-          document.getElementById("loader-wrapper").style.display = "none";
-          document.getElementById("main-content").style.display = "block";
-        },
+      // Load your Lottie animation
+      var animation = lottie.loadAnimation({
+        container: document.getElementById("lottie"),
+        renderer: "svg",
+        loop: true,
+        autoplay: true,
+        path: "json/Loading.json" // ✅ make sure file exists: /json/Loading.json
       });
-    } else {
-      // fallback: hide loader even if GSAP failed
-      document.getElementById("loader-wrapper").style.display = "none";
-      document.getElementById("main-content").style.display = "block";
-    }
-  });
-</script>
 
+      // When window finishes loading
+      window.addEventListener("load", function () {
+        setTimeout(() => {
+          if (window.gsap) {
+            gsap.to("#loader-wrapper", {
+              opacity: 0,
+              duration: 0.6,
+              onComplete: () => {
+                document.getElementById("loader-wrapper").style.display = "none";
+                document.getElementById("main-content").style.display = "block";
+              },
+            });
+          } else {
+            // fallback
+            document.getElementById("loader-wrapper").style.display = "none";
+            document.getElementById("main-content").style.display = "block";
+          }
+        }, 2000); // simulate loading delay
+      });
+    </script>
 
     <script>
       gsap.registerPlugin(ScrollTrigger);
